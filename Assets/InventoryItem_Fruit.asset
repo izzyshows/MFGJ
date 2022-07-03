@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2aab70663c58e504d8e636189e4cb263, type: 3}
-  m_Name: InventoryItem_Flowers
+  m_Name: InventoryItem_Fruit
   m_EditorClassIdentifier: 
-  id: InventoryItem_Flowers
-  displayName: Flower
-  icon: {fileID: 21300000, guid: e274b9c8a0e567d46989c0348e04e418, type: 3}
-  prefab: {fileID: 9157357210362336131, guid: b81a3abefbe39f747ba0d499af78d5d5, type: 3}
+  id: InventoryItem_Fruit
+  displayName: Fruit
+  icon: {fileID: 21300000, guid: cfdc01a50d35d034d9dcb7ab1c1823e7, type: 3}
+  prefab: {fileID: 8076232797341036751, guid: 1ed30299111aa1d4b8d73c6dd65c3282, type: 3}
