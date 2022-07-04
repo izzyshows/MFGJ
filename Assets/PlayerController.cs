@@ -53,4 +53,9 @@ public class PlayerController : MonoBehaviour
         currentInputVector = Vector2.SmoothDamp(currentInputVector, inputMove, ref smoothInputVelocity, smoothInputSpeed);
         transform.position = new Vector3(transform.position.x + currentInputVector.x * playerSpeed * Time.deltaTime, transform.position.y + currentInputVector.y * playerSpeed * Time.deltaTime);
     }
+    
+    private Inventory inventory;
+    private void Awake() {
+        inventory = new Inventory();
+    }
 }

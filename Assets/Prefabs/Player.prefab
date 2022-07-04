@@ -128,8 +128,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4056832427326729237}
   - component: {fileID: 4056832427326729236}
-  - component: {fileID: 4056832427326729238}
   - component: {fileID: 5775739369321446553}
+  - component: {fileID: 5891972512766853422}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -205,21 +205,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4056832427326729238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4056832427326729451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cb88aef5041b5f4f892573eed2ba130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothInputSpeed: 0.2
-  playerSpeed: 10
-  sword: {fileID: 0}
 --- !u!114 &5775739369321446553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,3 +295,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5891972512766853422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056832427326729451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a900f9203448df74abed5101c0e883bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothInputSpeed: 0.2
+  playerSpeed: 10
+  sword: {fileID: 0}

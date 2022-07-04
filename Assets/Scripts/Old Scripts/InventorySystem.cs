@@ -12,6 +12,15 @@ public class InventorySystem : MonoBehaviour
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
     }
+
+    public InventoryItem Get(InventoryItemData referenceData)
+    {
+        if (m_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
+        {
+            return value;
+        }
+        return null;
+    }
     
     public void Add(InventoryItemData referenceData)
     {
@@ -65,13 +74,13 @@ public class InventoryItem
     }
 }
 
-public class ItemObject : MonoBehaviour
-{
-    public InventoryItemData referenceItem;
+// public class ItemObject : MonoBehaviour
+// {
+//     public InventoryItemData referenceItem;
 
-    public void OnHandlePickupItem()
-    {
-        // InventorySystem.current.Add(referenceItem);
-        Destroy(gameObject);
-    }
-}
+//     public void OnHandlePickupItem()
+//     {
+//         InventorySystem.current.Add(referenceItem);
+//         // Destroy(gameObject);
+//     }
+// }
