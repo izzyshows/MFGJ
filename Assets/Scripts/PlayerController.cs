@@ -13,12 +13,14 @@ public class PlayerController : MonoBehaviour
     private bool attackEnabled = false;
     private double bufferAttack = 0, timeAttack = 1;
 
+    private Animator anim;
+
 
     void Start() {
+        anim = GetComponent<Animator>();
     }
 
     void Update() {
-
         // attack
         if(Input.GetButton("Fire1") && !attackEnabled) {
             attackEnabled = true;
@@ -36,6 +38,14 @@ public class PlayerController : MonoBehaviour
 
         // movement
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        if(input.x < 0) {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        } else {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
+        anim.SetBool("run", input.x != 0.0f || input.y != 0.0f);
         transform.position = new Vector3(transform.position.x + input.x * playerSpeed * Time.deltaTime, transform.position.y + input.y * playerSpeed * Time.deltaTime);
     }
     

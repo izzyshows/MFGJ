@@ -11,8 +11,6 @@ public class Inventory
         itemList = new List<Item>();
 
         AddItem(new Item { itemType = Item.ItemType.Flower, amount = 1});
-
-        Debug.Log(itemList.Count);
     }
 
     public void AddItem(Item item)
