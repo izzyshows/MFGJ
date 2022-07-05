@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private  UI_Inventory uiInventory;
     [SerializeField]
     private float playerSpeed = 10f;
 
@@ -52,5 +53,6 @@ public class PlayerController : MonoBehaviour
     private Inventory inventory;
     private void Awake() {
         inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 }
