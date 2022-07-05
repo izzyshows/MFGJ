@@ -3,10 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Laser
-  - Enemy
-  - Monster
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -43,16 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 3673415891
-    locked: 0
-  - name: Object
-    uniqueID: 1766911043
-    locked: 0
-  - name: Player
-    uniqueID: 118754749
-    locked: 0
-  - name: 
-    uniqueID: 3842986903
     locked: 0
