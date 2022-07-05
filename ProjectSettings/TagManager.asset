@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
+  - Laser
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -50,4 +52,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2791912257
+    locked: 0
+  - name: Overlay
+    uniqueID: 2296151123
     locked: 0
