@@ -409,6 +409,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &768380093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7990530532448978357, guid: 1be881ce77e8b2046920bd1518820e22, type: 3}
+  m_PrefabInstance: {fileID: 1483772277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &768380095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768380093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a900f9203448df74abed5101c0e883bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiInventory: {fileID: 9200529}
+  playerSpeed: 10
+  sword: {fileID: 0}
 --- !u!1001 &952344972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -827,7 +847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1465357090
 RectTransform:
   m_ObjectHideFlags: 0
