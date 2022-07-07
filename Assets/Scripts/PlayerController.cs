@@ -54,5 +54,20 @@ public class PlayerController : MonoBehaviour
     private void Awake() {
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
+
+        ItemWorld.SpawnItemWorld(new Vector3(2, 2), new Item { itemType = Item.ItemType.RedPotion, amount = 1 });
+        ItemWorld.SpawnItemWorld(new Vector3(-2, 2), new Item { itemType = Item.ItemType.BlueFruit, amount = 1 });
+        ItemWorld.SpawnItemWorld(new Vector3(0, 2), new Item { itemType = Item.ItemType.GoldFlower, amount = 1 });
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
+        if (itemWorld != null)
+        {
+            // Touching Item
+            inventory.AddItem(itemWorld.GetItem());
+            itemWorld.DestroySelf();
+        }
     }
 }
