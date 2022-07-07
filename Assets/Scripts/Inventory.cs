@@ -10,9 +10,10 @@ public class Inventory
     {
         itemList = new List<Item>();
 
-        AddItem(new Item { itemType = Item.ItemType.GoldFlower, amount = 1});
+        AddItem(new Item { itemType = Item.ItemType.GoldFlower, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.RedPotion, amount = 1});
         AddItem(new Item { itemType = Item.ItemType.BlueFruit, amount = 1});
+        AddItem(new Item { itemType = Item.ItemType.BlueFruit, amount = 1 });
     }
 
     public void AddItem(Item item)
