@@ -86,13 +86,11 @@ public class PlayerController : MonoBehaviour
     //    PlayerController player = GameObject.Find("Player").transform.position;
     //}
 
-    private Vector3 playerPosition;
+    //private Vector3 playerPosition;
 
     public Vector3 GetPosition()
     {
-        if (GameObject.FindWithTag("Player"))
-        {
-            playerPosition = GameObject.FindWithTag("Player").transform.position;
-        }
+        return gameObject.transform.position;
+
     }
 }
