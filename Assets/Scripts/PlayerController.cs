@@ -18,11 +18,12 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     private Inventory inventory;
-    //private playerPosition = 0,0,0;
+    SpriteRenderer sprite;
 
     void Start() {
+        sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        inventory = new Inventory();
+        inventory = new Inventory(UseItem);
         uiInventory.SetPlayer(this);
         uiInventory.SetInventory(inventory);
     }
@@ -68,29 +69,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //public void GetPosition()
-    //{
-    //    position = GameObject.Find("Player").transform.position;
-    //    return position;
-    //}
-
-    //public static PlayerController GetPosition(Vector3 position, PlayerController player)
-    //{
-    //    //Transform transform = Instantiate(ItemAssets.Instance.pfItemWorld, position, Quaternion.identity);
-
-    //    //ItemWorld itemWorld = transform.GetComponent<ItemWorld>();
-    //    //itemWorld.SetItem(item);
-
-    //    //return itemWorld;
-
-    //    PlayerController player = GameObject.Find("Player").transform.position;
-    //}
-
-    //private Vector3 playerPosition;
+    public void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.RedPotion:
+                FlashRed();
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.RedPotion, amount = 1 });
+                break;
+        }
+    }
 
     public Vector3 GetPosition()
     {
         return gameObject.transform.position;
 
+    }
+
+    public void FlashRed()
+    {
+        sprite.color = new Color(1, 0, 0, 1);
     }
 }
