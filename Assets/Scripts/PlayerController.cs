@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private double bufferAttack = 0, timeAttack = 1;
 
     private Animator anim;
-    double buffer = 0;
+    float buffer = 0;
     public bool flashGreen = false;
 
     private Inventory inventory;
@@ -69,15 +69,16 @@ public class PlayerController : MonoBehaviour
                 {
                     rend.color = new Color(0, 1, 0, 1);
                     buffer = buffer + Time.deltaTime;
-                    if (buffer > 3)
+                    Debug.Log(buffer);
+                    if (buffer > 0.15f)
                     {
                         rend.color = new Color(1, 1, 1, 1);
                         buffer = 0;
+                        flashGreen = false;
                     }
                 }
             }
         }
-        flashGreen = false;
     }
     
 

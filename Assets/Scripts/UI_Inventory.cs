@@ -11,11 +11,27 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private PlayerController player;
+    public GameObject theInventory;
 
 
     private void Awake() {
         itemSlotContainer = transform.Find("itemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
+    }
+
+    void Update()
+    {
+
+    }
+
+    public void hide()
+    {
+        theInventory.SetActive(false);
+    }
+
+    public void show()
+    {
+        theInventory.SetActive(true);
     }
 
     public void SetPlayer(PlayerController player)
