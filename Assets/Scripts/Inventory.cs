@@ -48,6 +48,31 @@ public class Inventory
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }
 
+    public void RemoveItem2(Item item)
+    {
+        if (item.IsStackable())
+        {
+            Item itemInInventory = item;
+            foreach (Item it in itemList)
+            {
+                if (it.itemType == item.itemType)
+                {
+                    it.amount = it.amount - 1;
+                }
+            }
+            if (itemInInventory != null && itemInInventory.amount <= 0)
+            {
+                itemList.Remove(itemInInventory);
+            }
+        }
+        else
+        {
+            Debug.Log(itemList.Remove(item));
+        }
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+
     public void RemoveItem(Item item)
     {
         if (item.IsStackable())
@@ -72,6 +97,31 @@ public class Inventory
         }
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }
+
+    //public void RemoveItem(Item item)
+    //{
+    //    if (item.IsStackable())
+    //    {
+    //        Item itemInInventory = item;
+    //        foreach (Item inventoryItem in itemList)
+    //        {
+    //            if (inventoryItem.itemType == item.itemType)
+    //            {
+    //                itemInInventory.amount -= item.amount;
+    //                itemInInventory = inventoryItem;
+    //            }
+    //        }
+    //        if (itemInInventory != null && itemInInventory.amount <= 0)
+    //        {
+    //            Debug.Log(itemList.Remove(itemInInventory));
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.Log(itemList.Remove(item));
+    //    }
+    //    OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    //}
 
     public void UseItem(Item item)
     {

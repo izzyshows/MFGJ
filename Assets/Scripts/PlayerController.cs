@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private double bufferAttack = 0, timeAttack = 1;
 
     private Animator anim;
+    double buffer = 0;
+    public bool flashGreen = false;
 
     private Inventory inventory;
     SpriteRenderer sprite;
@@ -55,6 +57,27 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("run", input.x != 0.0f || input.y != 0.0f);
         transform.position = new Vector3(transform.position.x + input.x * playerSpeed * Time.deltaTime, transform.position.y + input.y * playerSpeed * Time.deltaTime);
+
+        //change color
+        if (flashGreen)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                GameObject go = transform.GetChild(i).gameObject;
+                SpriteRenderer rend = go.GetComponent<SpriteRenderer>();
+                if (rend)
+                {
+                    rend.color = new Color(0, 1, 0, 1);
+                    buffer = buffer + Time.deltaTime;
+                    if (buffer > 3)
+                    {
+                        rend.color = new Color(1, 1, 1, 1);
+                        buffer = 0;
+                    }
+                }
+            }
+        }
+        flashGreen = false;
     }
     
 
@@ -74,8 +97,8 @@ public class PlayerController : MonoBehaviour
         switch (item.itemType)
         {
             case Item.ItemType.RedPotion:
-                FlashRed();
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.RedPotion, amount = 1 });
+                flashGreen = true;
+                inventory.RemoveItem2(item);
                 break;
         }
     }
@@ -86,8 +109,50 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void FlashRed()
-    {
-        sprite.color = new Color(1, 0, 0, 1);
-    }
+
+    //public void FlashGreen()
+    //{
+    //    for (int i = 0; i < transform.childCount; i++)
+    //    {
+    //        GameObject go = transform.GetChild(i).gameObject;
+    //        SpriteRenderer rend = go.GetComponent<SpriteRenderer>();
+    //        if (rend)
+    //        {
+    //            rend.color = new Color(0, 1, 0, 1);
+    //            buffer = buffer + Time.deltaTime;
+    //            if (buffer > 3)
+    //            {
+    //                rend.color = new Color(1, 1, 1, 1);
+    //                buffer = 0;
+    //            }
+    //        }
+    //    }
+    //}
+
+    //IEnumerator FlashGreen()
+    //{
+    //    for (int i = 0; i < transform.childCount; i++)
+    //    {
+    //        GameObject go = transform.GetChild(i).gameObject;
+    //        SpriteRenderer rend = go.GetComponent<SpriteRenderer>();
+    //        if (rend)
+    //        {
+    //            rend.color = new Color(0, 1, 0, 1);
+    //            //rend.color = new Color(1, 1, 1, 1);
+    //        }
+    //    }
+
+    //    yield return new WaitForSeconds(3);
+
+    //    for (int i = 0; i < transform.childCount; i++)
+    //    {
+    //        GameObject go = transform.GetChild(i).gameObject;
+    //        SpriteRenderer rend = go.GetComponent<SpriteRenderer>();
+    //        if (rend)
+    //        {
+    //            //rend.color = new Color(0, 1, 0, 1);
+    //            rend.color = new Color(1, 1, 1, 1);
+    //        }
+    //    }
+    //}
 }
