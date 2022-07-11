@@ -61,20 +61,32 @@ public class PlayerController : MonoBehaviour
         //change color
         if (flashGreen)
         {
-            for (int i = 0; i < transform.childCount; i++)
+            buffer += Time.deltaTime;
+
+            if (buffer > 0.15f)
             {
-                GameObject go = transform.GetChild(i).gameObject;
-                SpriteRenderer rend = go.GetComponent<SpriteRenderer>();
-                if (rend)
+                for (int i = 0; i < transform.childCount; i++)
                 {
-                    rend.color = new Color(0, 1, 0, 1);
-                    buffer = buffer + Time.deltaTime;
-                    Debug.Log(buffer);
-                    if (buffer > 0.15f)
+                    GameObject go = transform.GetChild(i).gameObject;
+                    SpriteRenderer rend = go.GetComponent<SpriteRenderer>();
+                    if (rend)
                     {
                         rend.color = new Color(1, 1, 1, 1);
                         buffer = 0;
                         flashGreen = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    GameObject go = transform.GetChild(i).gameObject;
+                    SpriteRenderer rend = go.GetComponent<SpriteRenderer>();
+                    if (rend)
+                    {
+                        rend.color = new Color(0, 1, 0, 1);
+
                     }
                 }
             }
@@ -109,51 +121,4 @@ public class PlayerController : MonoBehaviour
         return gameObject.transform.position;
 
     }
-
-
-    //public void FlashGreen()
-    //{
-    //    for (int i = 0; i < transform.childCount; i++)
-    //    {
-    //        GameObject go = transform.GetChild(i).gameObject;
-    //        SpriteRenderer rend = go.GetComponent<SpriteRenderer>();
-    //        if (rend)
-    //        {
-    //            rend.color = new Color(0, 1, 0, 1);
-    //            buffer = buffer + Time.deltaTime;
-    //            if (buffer > 3)
-    //            {
-    //                rend.color = new Color(1, 1, 1, 1);
-    //                buffer = 0;
-    //            }
-    //        }
-    //    }
-    //}
-
-    //IEnumerator FlashGreen()
-    //{
-    //    for (int i = 0; i < transform.childCount; i++)
-    //    {
-    //        GameObject go = transform.GetChild(i).gameObject;
-    //        SpriteRenderer rend = go.GetComponent<SpriteRenderer>();
-    //        if (rend)
-    //        {
-    //            rend.color = new Color(0, 1, 0, 1);
-    //            //rend.color = new Color(1, 1, 1, 1);
-    //        }
-    //    }
-
-    //    yield return new WaitForSeconds(3);
-
-    //    for (int i = 0; i < transform.childCount; i++)
-    //    {
-    //        GameObject go = transform.GetChild(i).gameObject;
-    //        SpriteRenderer rend = go.GetComponent<SpriteRenderer>();
-    //        if (rend)
-    //        {
-    //            //rend.color = new Color(0, 1, 0, 1);
-    //            rend.color = new Color(1, 1, 1, 1);
-    //        }
-    //    }
-    //}
 }
