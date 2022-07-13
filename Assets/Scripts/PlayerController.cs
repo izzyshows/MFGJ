@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,17 +23,46 @@ public class PlayerController : MonoBehaviour
     private Inventory inventory;
     SpriteRenderer sprite;
 
+    public int life = 100;
+
+    [SerializeField]
+    private TextMeshProUGUI lifeText;
+    private bool damaged = false;
+    private double bufferDamage = 0, numFlickering = 0;
+
     void Start() {
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         inventory = new Inventory(UseItem);
         uiInventory.SetPlayer(this);
         uiInventory.SetInventory(inventory);
+        lifeText.SetText(life + "");
     }
 
     void Update() {
+        // Took damage
+        if (damaged) {
+            if(numFlickering < 6) {
+                if (bufferDamage > 0.1f) {
+                    for (int i = 0; i < transform.childCount; i++) {
+                        SpriteRenderer rend = transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>();
+                        if (rend) {
+                            rend.enabled = !rend.enabled;
+                            bufferDamage = 0;
+                        }
+                    }
+                    numFlickering++;
+                }
+                bufferDamage = bufferDamage + Time.deltaTime;
+            }
+            else {
+                damaged = false;
+                numFlickering = 0;
+            }  
+        }
+
         // attack
-        if(Input.GetButton("Fire1") && !attackEnabled) {
+        if (Input.GetButton("Fire1") && !attackEnabled) {
             attackEnabled = true;
             bufferAttack = 0;
             sword.SetActive(true);
@@ -86,7 +116,6 @@ public class PlayerController : MonoBehaviour
                     if (rend)
                     {
                         rend.color = new Color(0, 1, 0, 1);
-
                     }
                 }
             }
@@ -102,6 +131,12 @@ public class PlayerController : MonoBehaviour
             // Touching Item
             inventory.AddItem(itemWorld.GetItem());
             itemWorld.DestroySelf();
+        }
+
+        if(collider.CompareTag("Slime") && !damaged) {
+            life = life - 10;
+            lifeText.SetText(life + "");
+            damaged = true;
         }
     }
 
